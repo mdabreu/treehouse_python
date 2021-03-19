@@ -1,7 +1,10 @@
-## need to add error handling 
-
 TICKET_PRICE = 10
+SERVICE_CHARGE = 2
 tickets_remaining = 100  
+
+
+def calculate_price_of_order(tickets_to_purchase):
+    return tickets_to_purchase * TICKET_PRICE + SERVICE_CHARGE
 
 # run code until we run out of tickets
 
@@ -14,13 +17,15 @@ while tickets_remaining >= 1:
         tickets_to_purchase = int(input("{} how many tickets would you like to buy? ".format(name)))
         if tickets_to_purchase > tickets_remaining:
             raise ValueError("Please enter a valid ticket amount.".format(tickets_remaining))
-        # raise value error if requested tickets is more than avialble 
     except ValueError as pup:
         print("Oh no we ran into an issue. {}".format(pup))
     else:
-        total_price_of_tickets_to_purchase = tickets_to_purchase * TICKET_PRICE
-        print("{} your total for {} tickets is ${}.".format(name, tickets_to_purchase, total_price_of_tickets_to_purchase))
-        order_confirm = input("Is {} the amount of tickets you would like to buy for ${}?\n Please enter Yes or No  ".format(tickets_to_purchase, total_price_of_tickets_to_purchase))
+        total_price_of_tickets_to_purchase = calculate_price_of_order
+        
+        print("{} your total for {} tickets is ${}.".format(name, tickets_to_purchase, calculate_price_of_order(tickets_to_purchase)))
+              
+        order_confirm = input("Is {} the amount of tickets you would like to buy for ${}?\n Please enter Yes or No  ".format(tickets_to_purchase, calculate_price_of_order(tickets_to_purchase)))
+              
         if order_confirm.lower() == "yes":
             tickets_remaining = tickets_remaining - tickets_to_purchase
             print("SOLD")
@@ -33,3 +38,4 @@ if tickets_remaining == 0:
        print("There are no tickets left")
 else:
     print("There are", tickets_remaining, "tickets remaining")
+    
