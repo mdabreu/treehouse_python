@@ -1,4 +1,4 @@
-'''python
+```python
 TICKET_PRICE = 10
 SERVICE_CHARGE = 2
 tickets_remaining = 100  
@@ -40,4 +40,4 @@ if tickets_remaining == 0:
 else:
     print("There are", tickets_remaining, "tickets remaining")
     
-'''
+```
