@@ -5,10 +5,11 @@
 shopping_list = []
 
 def show_help():
-    print("What should we pick up at the store")
+    print("What should we pick up at the store?")
     print("""
 Enter 'DONE' to stop adding items.
 Enter 'SHOW_LIST' to see all items on the list. 
+Enter 'REMOVE' to remove item.
 Enter 'HELP' for this help.
 """)
 
@@ -26,6 +27,11 @@ def show_list():
           print(item)
     # enable the show command to list, don't forget to add to help
     # don't forget to run it
+    
+def remove_from_list(item):
+    return shopping_list.remove(item)
+    print("Enter item to be removed: ")
+    
           
 
 show_help()
@@ -33,14 +39,20 @@ while True:
     new_item = input("> ")
         
         
-    if new_item =='DONE':
+    if new_item == 'DONE':
         break
     elif new_item == 'HELP':
         show_help()
         continue
-    elif new_item =='SHOW_LIST':
+    elif new_item == 'SHOW_LIST':
         show_list()
         continue
+    elif new_item == 'REMOVE':
+        remove_item = input("What item would you like to remove? ")
+        remove_from_list(remove_item)
+        print("{} has been removed from your list.".format(remove_item))
+        print("There are {} items in your list.".format(len(shopping_list)))
+        continue 
          
         
     # call add to list
