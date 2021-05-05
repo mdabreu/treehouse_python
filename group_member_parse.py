@@ -16,9 +16,18 @@ musical_groups = [
 g = 0
 
 
+# code to parse musical groups
 for member in musical_groups:
     parse_group = ", ".join(musical_groups[g])
     print(parse_group)
     g = g +1
-                        
+                     
+        
+        
+# code to parse groups with more than three members
+for member in musical_groups:
+    if len(musical_groups[g]) == 3:
+        parse_group = ", ".join(musical_groups[g])
+        print(parse_group)
+    g = g +1
     
